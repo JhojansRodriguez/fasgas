@@ -1,0 +1,601 @@
+/* Paleta de Colores para Empresa de Gas GLP
+   Primario: Azul oscuro (#0D47A1) - Profesionalismo, Confianza
+   Secundario: Azul medio (#1976D2) - Calma, Eficiencia
+   Acento: Naranja (#FF9800) - Energía, Alerta (para botones de acción, advertencias)
+   Complementario: Amarillo claro (#FFF59D) - Para fondos sutiles o destaques
+   Neutros:
+     Gris oscuro (#333333) - Texto principal
+     Gris medio (#757575) - Texto secundario, bordes
+     Gris claro (#E0E0E0) - Fondos de sección, divisores
+     Blanco (#FFFFFF) - Texto sobre fondos oscuros, áreas de contenido
+*/
+
+:root {
+  --color-primary: #0D47A1; /* Azul oscuro */
+  --color-primary-dark: #002171;
+  --color-primary-light: #5472d3;
+  --color-secondary: #1976D2; /* Azul medio */
+  --color-accent: #FF9800;   /* Naranja */
+  --color-accent-hover: #F57C00; /* Naranja más oscuro para hover */
+  --color-background-light: #f4f6f8; /* Un gris muy claro para el fondo general */
+  --color-surface: #FFFFFF; /* Blanco para tarjetas, modales, etc. */
+  --color-text-primary: #333333; /* Gris oscuro */
+  --color-text-secondary: #555555; /* Gris medio */
+  --color-text-on-primary: #FFFFFF;
+  --color-text-on-accent: #FFFFFF;
+  --color-border: #E0E0E0; /* Gris claro */
+  --color-success: #4CAF50;
+  --color-error: #F44336;
+  --color-warning: #FFC107;
+  --color-info: #2196F3;
+
+  --font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-lg: 1.25rem;  /* 20px */
+
+  --line-height-base: 1.6;
+
+  --border-radius: 4px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+
+  --container-max-width: 1200px;
+  --header-height: 60px;
+  --sidebar-width: 250px;
+}
+
+/* Reseteo Básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans-serif);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  padding: var(--spacing-md);
+}
+
+/* Estilos globales para elementos comunes */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+h1 { font-size: 2.25rem; } /* 36px */
+h2 { font-size: 1.875rem; } /* 30px */
+h3 { font-size: 1.5rem; }   /* 24px */
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Formularios */
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(var(--color-secondary), 0.25);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-primary);
+  border: none;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: var(--color-primary);
+}
+
+button.primary {
+  background-color: var(--color-primary);
+}
+button.primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+button.accent {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+button.accent:hover {
+  background-color: var(--color-accent-hover);
+}
+
+button.danger {
+  background-color: var(--color-error);
+  color: var(--color-text-on-primary);
+}
+button.danger:hover {
+  opacity: 0.9;
+}
+
+
+/* Contenedores y Tarjetas */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin-top: 0;
+}
+
+/* Clases de utilidad */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-success { color: var(--color-success); }
+.text-error { color: var(--color-error); }
+.text-warning { color: var(--color-warning); }
+
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+
+/* Estilos para la barra de navegación principal y lateral (placeholders) */
+.app-header {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  padding: 0 var(--spacing-md);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure header stays on top */
+}
+
+.app-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text-on-primary);
+  text-decoration: none;
+}
+
+.main-layout {
+  display: flex;
+  margin-top: var(--header-height); /* Account for fixed header */
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--color-surface);
+  padding: var(--spacing-md);
+  height: calc(100vh - var(--header-height)); /* Full height minus header */
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  position: fixed; /* Fixed sidebar */
+  left: 0;
+  top: var(--header-height);
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav li a {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar nav li a:hover,
+.sidebar nav li a.router-link-exact-active {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-primary);
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  /* height: calc(100vh - var(--header-height)); -> Not needed if main-layout handles overall height */
+  margin-left: var(--sidebar-width); /* Account for fixed sidebar */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) { /* Adjusted breakpoint for sidebar behavior */
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 200; /* Ensure sidebar is above content when open */
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content-area {
+    margin-left: 0; /* Content takes full width when sidebar is hidden */
+  }
+
+  .menu-toggle { /* Style for a burger menu button */
+    display: block; /* Show it on smaller screens */
+    background: none;
+    border: none;
+    color: var(--color-text-on-primary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-right: var(--spacing-md);
+  }
+}
+
+@media (min-width: 993px) {
+  .menu-toggle {
+    display: none; /* Hide burger menu on larger screens */
+  }
+}
+
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 15px;
+    /* Sidebar width is less relevant when it's off-canvas */
+  }
+
+  .app-header .logo {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-md: 0.8rem;
+    --spacing-lg: 1.2rem;
+  }
+
+  .sidebar nav li a {
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+  .content-area {
+    padding: var(--spacing-md);
+  }
+
+  .app-header {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* Loader styles */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust as needed */
+  margin: var(--spacing-lg) 0;
+}
+
+.loader {
+  border: 4px solid var(--color-background-light);
+  border-top: 4px solid var(--color-secondary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Table styles */
+.styled-table-container {
+  overflow-x: auto; /* Allows table to be scrolled horizontally on small screens */
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  font-size: 0.9em;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-surface);
+}
+
+.styled-table thead tr {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid var(--color-border);
+  white-space: nowrap; /* Prevents text wrapping that might break layout */
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa; /* Lighter shade for even rows */
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.styled-table tbody tr:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-text-on-primary);
+  cursor: default;
+}
+
+.styled-table .actions button {
+  margin-right: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  min-width: auto; /* Override default button padding if too large */
+}
+.styled-table .actions {
+  white-space: nowrap; /* Ensure action buttons stay on one line */
+}
+
+
+/* Alert styles */
+.alert {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+}
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background-color: var(--color-surface);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+}
+
+/* Modal Basic Structure (actual implementation will be component-based) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--spacing-md); /* Add padding for smaller screens */
+}
+
+.modal-content {
+  background-color: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-lg);
+  min-width: 300px;
+  max-width: 95%; /* Ensure it fits on small screens */
+  max-height: 90vh; /* Prevent modal from being too tall */
+  overflow-y: auto; /* Allow scrolling within modal if content exceeds height */
+}
+
+@media (min-width: 576px) {
+  .modal-content {
+    padding: var(--spacing-xl);
+    min-width: 400px;
+    max-width: 600px;
+  }
+}
+@media (min-width: 768px) {
+  .modal-content {
+    max-width: 700px;
+  }
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.5rem; /* 24px */
+  color: var(--color-primary);
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: 0; /* Remove default button padding */
+  line-height: 1; /* Ensure proper alignment */
+}
+.modal-close-button:hover {
+  color: var(--color-text-primary);
+}
+
+.modal-body {
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
